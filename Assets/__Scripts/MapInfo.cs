@@ -12,12 +12,13 @@ public class MapInfo : MonoBehaviour
     static public string GRAP_TILES { get; private set; }
 
     [Header("Inscribed")]
-    public  TextAsset delverLevel;
+    static public  TextAsset delverLevel;
     public TextAsset delverCollisions;
     public TextAsset delverGrapTiles;
 
     void Start()
     {
+
         LoadMap();
 
         COLLISIONS = Utils.RemoveLineEndings(delverCollisions.text);

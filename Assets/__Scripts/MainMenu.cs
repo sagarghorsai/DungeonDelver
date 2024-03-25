@@ -5,23 +5,29 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    MapInfo map = new MapInfo();
     public TextAsset Hatdelver;
     public TextAsset Eagledelver;
 
     public void loadHat()
     {
-       map.delverLevel = Hatdelver;
+       MapInfo.delverLevel = Hatdelver;
+        SceneManager.LoadScene("__Scene_Dungeon");
+
     }
     public void loadEagle()
     {
-        map.delverLevel = Eagledelver;
+        MapInfo.delverLevel = Eagledelver;
+        SceneManager.LoadScene("__Scene_Dungeon");
+
+    }
+    public void StartPlay()
+    {
+        SceneManager.LoadScene("__Scene_Dungeon");
 
     }
 
     public void Play()
     {
-        map.delverLevel = Hatdelver;
         SceneManager.LoadScene("__Scene_Dungeon");
     }
 
