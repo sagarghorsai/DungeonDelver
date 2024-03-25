@@ -12,7 +12,7 @@ public class MapInfo : MonoBehaviour
     static public string GRAP_TILES { get; private set; }
 
     [Header("Inscribed")]
-    public static TextAsset delverLevel;
+    public  TextAsset delverLevel;
     public TextAsset delverCollisions;
     public TextAsset delverGrapTiles;
 

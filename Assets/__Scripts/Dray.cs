@@ -96,6 +96,17 @@ public class Dray : MonoBehaviour, IFacingMover, IKeyMaster
         grappler = GetComponentInChildren<Grappler>();
         if (startWithGrappler) currentGadget = grappler;
         colld = GetComponent<Collider2D>();
+        swordController = GetComponentInChildren<SwordController>();
+        wandController = GetComponentInChildren<WandController>();
+        if (currentWeapon == WeaponType.Wand)
+        {
+            swordController.gameObject.active = false;
+        }
+        else if (currentWeapon == WeaponType.Sword)
+        {
+            wandController.gameObject.active = false;
+        }
+
 
     }
     void Start()
@@ -104,8 +115,9 @@ public class Dray : MonoBehaviour, IFacingMover, IKeyMaster
         lastSafeFacing = facing;
 
 
-        swordController = GetComponentInChildren<SwordController>();
-        wandController = GetComponentInChildren<WandController>();
+       
+        
+      
 
     }
 

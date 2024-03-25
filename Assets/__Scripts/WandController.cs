@@ -19,7 +19,7 @@ public class WandController : MonoBehaviour
         Transform MagicProjectileS = transform.Find("MagicProjectile");
         if (WandT == null)
         {
-            Debug.LogError("Could not find Sword child of SwordController.");
+            Debug.LogError("Could not find Wand child of WandController.");
             return;
         }
         Wand = WandT.gameObject;
@@ -45,10 +45,10 @@ public class WandController : MonoBehaviour
 
         Wand.SetActive(dray.mode == Dray.eMode.attack);
 
-        if (!projectileSpawned && isFullHealth && dray.mode == Dray.eMode.attack)
+        if (!projectileSpawned &&  dray.mode == Dray.eMode.attack)
         {
             MagicProjectile.SetActive(true);
-            ShootMagicSword();
+            ShootMagicWand();
             projectileSpawned = true;
             MagicProjectile.SetActive(false);
         }
@@ -58,20 +58,21 @@ public class WandController : MonoBehaviour
         }
     }
 
-    void ShootMagicSword()
+    void ShootMagicWand()
     {
         if (MagicProjectile != null && magicSwordSpawnPoint != null)
         {
             GameObject wand = Instantiate(MagicProjectile, magicSwordSpawnPoint.position, magicSwordSpawnPoint.rotation);
+            Vector2 shootDirection = magicSwordSpawnPoint.right;
 
             Rigidbody2D magicSwordRigidbody = wand.GetComponent<Rigidbody2D>();
             if (magicSwordRigidbody != null)
             {
-                Vector2 shootDirection = magicSwordSpawnPoint.right;
                 magicSwordRigidbody.velocity = shootDirection * magicSwordSpeed;
+                StartCoroutine(DestroyMagicSwordDelayed(wand));
+
             }
 
-            StartCoroutine(DestroyMagicSwordDelayed(wand));
         }
     }
 

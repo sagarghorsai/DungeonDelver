@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour, ISwappable
 Vector2.down, Vector2.zero };
 
     [Header("Inscribed: Enemy")]
-    public float maxHealth = 1;
+   static public float maxHealth = 1;
     public float knockbackSpeed = 10;
     public float knockbackDuration = 0.25f;
     public float invincibleDuration = 0.5f;
